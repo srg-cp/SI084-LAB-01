@@ -1,0 +1,90 @@
+name: si084-lab
+services:
+  db:
+    container_name: si084_db
+    environment:
+      POSTGRES_DB: erp
+      POSTGRES_PASSWORD: erp_app
+      POSTGRES_USER: erp_app
+    image: postgres:16
+    networks:
+      audit_net: null
+    ports:
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 5432
+        published: "5432"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: db_data
+        target: /var/lib/postgresql/data
+        volume: {}
+  dvwa:
+    container_name: si084_dvwa
+    image: vulnerables/web-dvwa:latest
+    networks:
+      audit_net: null
+    ports:
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 80
+        published: "8081"
+        protocol: tcp
+    restart: unless-stopped
+  juiceshop:
+    container_name: si084_juiceshop
+    image: bkimminich/juice-shop:latest
+    networks:
+      audit_net: null
+    ports:
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 3000
+        published: "3000"
+        protocol: tcp
+    restart: unless-stopped
+  wordpress:
+    container_name: si084_portal
+    depends_on:
+      wpdb:
+        condition: service_started
+        required: true
+    environment:
+      WORDPRESS_DB_HOST: wpdb
+      WORDPRESS_DB_NAME: wp
+      WORDPRESS_DB_PASSWORD: wp
+      WORDPRESS_DB_USER: wp
+    image: wordpress:latest
+    networks:
+      audit_net: null
+    ports:
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 80
+        published: "8082"
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: wp_data
+        target: /var/www/html
+        volume: {}
+  wpdb:
+    container_name: si084_wpdb
+    environment:
+      MARIADB_DATABASE: wp
+      MARIADB_PASSWORD: wp
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_USER: wp
+    image: mariadb:11
+    networks:
+      audit_net: null
+networks:
+  audit_net:
+    name: si084-lab_audit_net
+    driver: bridge
+volumes:
+  db_data:
+    name: si084-lab_db_data
+  wp_data:
+    name: si084-lab_wp_data

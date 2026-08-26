@@ -1,0 +1,1 @@
+["POSTGRES_DB=erp","POSTGRES_USER=erp_app","POSTGRES_PASSWORD=erp_app","PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/16/bin","GOSU_VERSION=1.19","LANG=en_US.utf8","PG_MAJOR=16","PG_VERSION=16.15-1.pgdg13+2","PGDATA=/var/lib/postgresql/data"]

@@ -1,0 +1,5 @@
+                             List of roles
+ Role name |                         Attributes                         
+-----------+------------------------------------------------------------
+ erp_app   | Superuser, Create role, Create DB, Replication, Bypass RLS
+
