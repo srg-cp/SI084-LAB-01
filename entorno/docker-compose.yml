@@ -1,0 +1,69 @@
+name: si084-lab
+
+networks:
+  audit_net:
+    driver: bridge
+
+volumes:
+  db_data:
+  wp_data:
+
+services:
+
+  # --- Aplicación web vulnerable moderna (SPA + API REST) ---
+  juiceshop:
+    image: bkimminich/juice-shop:latest
+    container_name: si084_juiceshop
+    ports:
+      - "127.0.0.1:3000:3000"
+    networks: [audit_net]
+    restart: unless-stopped
+
+  # --- Aplicación web vulnerable clásica (PHP + MySQL) ---
+  dvwa:
+    image: vulnerables/web-dvwa:latest
+    container_name: si084_dvwa
+    ports:
+      - "127.0.0.1:8081:80"
+    networks: [audit_net]
+    restart: unless-stopped
+
+  # --- Base de datos corporativa simulada ---
+  db:
+    image: postgres:16
+    container_name: si084_db
+    environment:
+      POSTGRES_USER: erp_app
+      POSTGRES_PASSWORD: erp_app          # <-- hallazgo intencional: credencial débil
+      POSTGRES_DB: erp
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks: [audit_net]
+
+  # --- Portal corporativo ---
+  wordpress:
+    image: wordpress:latest
+    container_name: si084_portal
+    depends_on: [wpdb]
+    environment:
+      WORDPRESS_DB_HOST: wpdb
+      WORDPRESS_DB_USER: wp
+      WORDPRESS_DB_PASSWORD: wp
+      WORDPRESS_DB_NAME: wp
+    ports:
+      - "127.0.0.1:8082:80"
+    volumes:
+      - wp_data:/var/www/html
+    networks: [audit_net]
+
+  wpdb:
+    image: mariadb:11
+    container_name: si084_wpdb
+    environment:
+      MARIADB_DATABASE: wp
+      MARIADB_USER: wp
+      MARIADB_PASSWORD: wp
+      MARIADB_ROOT_PASSWORD: root
+    networks: [audit_net]
