@@ -7,6 +7,7 @@ networks:
 volumes:
   db_data:
   wp_data:
+  simplerisk_db_data:
 
 services:
 
@@ -37,7 +38,8 @@ services:
       POSTGRES_PASSWORD: erp_app          # <-- hallazgo intencional: credencial débil
       POSTGRES_DB: erp
     ports:
-      - "127.0.0.1:5432:5432"
+      # El puerto 5432 del host ya está ocupado; el servicio conserva 5432 dentro de Docker.
+      - "127.0.0.1:55432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
     networks: [audit_net]
@@ -66,4 +68,24 @@ services:
       MARIADB_USER: wp
       MARIADB_PASSWORD: wp
       MARIADB_ROOT_PASSWORD: root
+    networks: [audit_net]
+
+  # --- Gestión de riesgos del Taller 03 ---
+  simplerisk-db:
+    image: mariadb:11
+    container_name: si084_srdb
+    environment:
+      MARIADB_ROOT_PASSWORD: SimpleRisk_lab
+      MARIADB_DATABASE: simplerisk
+    volumes:
+      - simplerisk_db_data:/var/lib/mysql
+    networks: [audit_net]
+
+  simplerisk:
+    image: simplerisk/simplerisk:latest
+    container_name: si084_simplerisk
+    depends_on: [simplerisk-db]
+    ports:
+      - "127.0.0.1:8083:80"
+      - "127.0.0.1:8443:443"
     networks: [audit_net]

@@ -1,0 +1,4 @@
+﻿Host,NVT Name,CVEs,Severity,Severity label,Template ID,Matched at,Timestamp,Reference
+juiceshop,Prometheus Metrics - Detect,N/D,5.5,medium,prometheus-metrics,http://juiceshop:3000/metrics,2026-09-02T21:28:57.99542596Z,https://github.com/prometheus/prometheus; https://hackerone.com/reports/1026196
+wordpress,WordPress Exposed Installation,N/D,9.8,critical,wp-install,http://wordpress:80/wp-admin/install.php?step=1,2026-09-02T21:29:05.016755308Z,https://smaranchand.com.np/2020/04/misconfigured-wordpress-takeover-to-remote-code-execution/; https://x.com/0xPugal/status/1610315762392268802
+dvwa,Sensitive Configuration Files Listing - Detect,N/D,5.5,medium,configuration-listing,http://dvwa:80/config/,2026-09-02T21:29:14.580370745Z,https://www.exploit-db.com/ghdb/7014

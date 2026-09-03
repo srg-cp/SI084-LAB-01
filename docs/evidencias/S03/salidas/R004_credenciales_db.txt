@@ -1,0 +1,17 @@
+EVIDENCIA DE RIESGO R-004 / H-001
+
+Activo: Base de datos ERP (contenedor si084_db)
+Fuente original: 20_evidencia/E01_baseline/env_db.json
+SHA-256 de la fuente: 1F221C0EDD57BC23EAD3800F00170872D0B9F0D7AB4E32DC0904FD6EE3CB865F
+
+Condición observada:
+La cuenta de servicio y su contraseña se encuentran definidas como variables de
+entorno del contenedor. La contraseña observada es débil e idéntica al nombre de
+la cuenta, y la configuración puede consultarse mediante docker inspect por
+cuentas con acceso al socket de Docker.
+
+Criterio relacionado:
+ISO/IEC 27001:2022 A.5.17 (Información de autenticación) y A.8.24 (Uso de
+criptografía).
+
+Referencia documental: 40_hallazgos/H-001.md

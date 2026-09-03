@@ -1,0 +1,11 @@
+﻿id_riesgo,activo,dueno_del_riesgo,clasificacion,amenaza,vulnerabilidad,cve,cvss,probabilidad,impacto,riesgo_inherente,nivel,evidencia
+R-001,Portal de clientes,Gerencia Comercial,Confidencial,Explotación de vulnerabilidad conocida,Prometheus Metrics - Detect,N/D,5.5,3,4,12,Alto,prometheus-metrics
+R-002,Aplicación legada interna,Gerencia de Operaciones,Interna,Explotación de vulnerabilidad conocida,Sensitive Configuration Files Listing - Detect,N/D,5.5,2,3,6,Medio,configuration-listing
+R-003,Portal corporativo,Gerencia Comercial,Pública,Explotación de vulnerabilidad conocida,WordPress Exposed Installation,N/D,9.8,5,1,5,Bajo,wp-install
+R-004,Base de datos ERP,Gerencia de Finanzas,Restringida,Acceso no autorizado mediante credenciales expuestas,Credenciales débiles almacenadas en variables de entorno,N/A,N/A,3,5,15,Alto,E01/env_db.json; H-001
+R-005,Base de datos ERP,Gerencia de Finanzas,Restringida,Abuso de privilegios de la cuenta de aplicación,"La cuenta erp_app posee privilegios de superusuario, creación de roles, replicación y bypass de RLS",N/A,N/A,3,5,15,Alto,E01/usuarios_postgres.txt
+R-006,Base de datos del portal WordPress,Gerencia Comercial,Confidencial,Compromiso de la base de datos mediante credenciales predecibles,Credenciales wp/wp y contraseña root débil definidas en Docker Compose,N/A,N/A,4,3,12,Alto,E01/compose_efectivo.yml
+R-007,Plataforma de contenedores,Jefatura de Infraestructura,Interna,Cambio no controlado o incorporación de componentes vulnerables,Uso de imágenes con etiqueta latest sin fijar versión o digest,N/A,N/A,3,4,12,Alto,E01/compose_efectivo.yml; E01/imagenes.tsv
+R-008,Servicios web del laboratorio,Jefatura de Infraestructura,Interna,Intercepción o alteración del tráfico de aplicación,Servicios publicados mediante HTTP sin protección TLS,N/A,N/A,2,3,6,Medio,E01/puertos.tsv; PT03_soa_extracto.md
+R-009,Red de contenedores audit_net,Jefatura de Infraestructura,Interna,Movimiento lateral desde un contenedor comprometido,Todos los servicios comparten una única red bridge sin segmentación por función,N/A,N/A,2,4,8,Medio,E01/compose_efectivo.yml
+R-010,Datos persistentes de ERP y WordPress,Jefatura de Infraestructura,Restringida,Pérdida o corrupción de datos persistentes,La línea base no evidencia copias de seguridad ni pruebas de restauración de los volúmenes,N/A,N/A,2,5,10,Medio,E01/compose_efectivo.yml

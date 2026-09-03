@@ -1,0 +1,7 @@
+si084_db	127.0.0.1:55432->5432/tcp	Up Less than a second
+si084_simplerisk	443/tcp, 127.0.0.1:8083->80/tcp	Up Less than a second (health: starting)
+si084_srdb	3306/tcp	Up 2 minutes
+si084_portal	127.0.0.1:8082->80/tcp	Up Less than a second
+si084_juiceshop	127.0.0.1:3000->3000/tcp	Up 12 minutes
+si084_wpdb	3306/tcp	Up 2 minutes
+si084_dvwa	127.0.0.1:8081->80/tcp	Up 12 minutes
