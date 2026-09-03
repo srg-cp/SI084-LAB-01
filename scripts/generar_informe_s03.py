@@ -73,8 +73,8 @@ body = root.find(W + "body")
 replacements = {
     "INFORME DE LABORATORIO N.º 2": "INFORME DE LABORATORIO N.º 03",
     "Título del taller": "Evaluación de riesgos con SimpleRisk y detección técnica con Nuclei",
-    "Semana N.º __2__ · Unidad _1__ · Grupo N.º ____": "Semana N.º 03 · Unidad I · Grupo N.º [POR COMPLETAR]",
-    "SERGIO COLQUE PONCE": "SERGIO COLQUE PONCE · Código: [POR COMPLETAR]",
+    "Semana N.º __2__ · Unidad _1__ · Grupo N.º ____": "Semana N.º 03 · Unidad I · Grupo N.º COLQUE",
+    "SERGIO COLQUE PONCE": "SERGIO COLQUE PONCE",
     "Haz clic derecho aquí y elige «Actualizar campos» para generar el índice.": "Actualice este índice en Word antes de exportar el PDF.",
     "Reglas de uso del laboratorio y de alcance que se respetaron durante el trabajo.": (
         "El escaneo se limita a los contenedores del entorno local si084-lab. No se analizan sistemas "
@@ -84,18 +84,24 @@ replacements = {
     "Cada paso lleva su título, qué se buscaba, el comando o la acción, y la evidencia de que funcionó. Quien lea el informe debe poder repetir el trabajo sin preguntar nada.": (
         "Se empleó como base el entorno Docker construido en el Taller 01. Para la detección técnica se "
         "seleccionó Nuclei, alternativa expresamente admitida por la guía cuando Greenbone/OpenVAS no es "
-        "viable por consumo de recursos. Las evidencias pendientes no se declaran como logradas."
+        "viable por consumo de recursos. Los resultados se sustentan en archivos técnicos y capturas fechadas."
     ),
     "Paso A": "Paso A — Preparar el entorno y el alcance autorizado",
     "Paso B": "Paso B — Desplegar y configurar SimpleRisk",
     "Paso C": "Paso C — Ejecutar el escaneo técnico con Nuclei",
     "Si algo no se logró, explícalo aquí. Un resultado no alcanzado y bien explicado vale más que uno declarado sin evidencia.": (
-        "Estado del borrador: la configuración y los papeles de trabajo están preparados, pero el motor "
-        "Docker debe ejecutarse para obtener reportes, capturas y hashes reales."
+        "Se completó el escaneo con Nuclei, la configuración de SimpleRisk y el registro de diez riesgos. "
+        "Se cargaron y trataron cuatro riesgos en SimpleRisk; el quinto quedó pendiente por límite de tiempo."
     ),
     "Mínimo tres. Una conclusión no resume lo que hiciste. Dice lo que aprendiste y se sostiene en la evidencia de la sección 3.": (
-        "Las conclusiones se completarán después del escaneo para que estén sustentadas en los resultados "
-        "reales y no en valores simulados."
+        "1. El CVSS no sustituye la valoración de negocio: WordPress obtuvo severidad técnica crítica, pero "
+        "riesgo Bajo (5) por el contexto del activo público.\n"
+        "2. La exposición de métricas y configuraciones demuestra que una respuesta HTTP exitosa puede revelar "
+        "información suficiente para reconocimiento y ataques posteriores.\n"
+        "3. La gestión de secretos y el mínimo privilegio son prioritarios: las credenciales débiles y la cuenta "
+        "erp_app con privilegios administrativos elevan el impacto sobre la base ERP restringida.\n"
+        "4. SimpleRisk permitió mantener trazabilidad entre activo, evidencia, dueño, valoración y tratamiento; "
+        "quedó documentada la limitación de cuatro de cinco riesgos cargados por tiempo disponible."
     ),
     "Copia cada pregunta de la guía de la semana y respóndela debajo.": (
         "La guía del Taller 03 no presenta preguntas de cuestionario."
@@ -110,10 +116,11 @@ replacements = {
         "ProjectDiscovery. Nuclei documentation. https://docs.projectdiscovery.io/tools/nuclei"
     ),
     "Capturas completas, archivos de configuración y salidas extensas. Cada anexo lleva su letra y su título, y se menciona en el cuerpo del informe.": (
-        "Anexo A — Reporte técnico de Nuclei (pendiente de ejecución).\n"
-        "Anexo B — Registro de riesgos PT03 (pendiente del reporte técnico).\n"
+        "Anexo A — Reporte técnico de Nuclei en CSV, XML y JSONL.\n"
+        "Anexo B — Registro PT03 con diez riesgos.\n"
         "Anexo C — Extracto de la Declaración de Aplicabilidad.\n"
         "Anexo D — Declaración firmada del alcance autorizado.\n"
+        "Anexo E — Capturas 01 a 15 de ejecución, configuración y tratamiento.\n"
         "Repositorio: https://github.com/srg-cp/SI084-LAB-01\n"
         "Versión de entrega: https://github.com/srg-cp/SI084-LAB-01/tree/taller-03"
     ),
@@ -158,13 +165,15 @@ step_content = {
         "Se añadieron los servicios si084_srdb y si084_simplerisk al archivo entorno/docker-compose.yml. "
         "La interfaz se publica exclusivamente en http://127.0.0.1:8083. La configuración de escalas "
         "1–5 y el criterio de aceptación ≤ 6 se documentó en PT03_escalas_riesgo.md.",
-        "Evidencia de interfaz y carga de riesgos: pendiente de ejecutar y capturar con Docker Desktop activo.",
+        "Las capturas 04 a 07 demuestran la operación, fórmula y apetito Medio (6); las capturas 08 a 15 "
+        "demuestran el registro y tratamiento aceptado de R-001 a R-004.",
     ],
     "Paso C — Ejecutar el escaneo técnico con Nuclei": [
         "El script scripts/S03_ejecutar_escaneo.cmd levanta el laboratorio, registra los contenedores y "
         "ejecuta Nuclei contra los tres servicios web internos. La salida JSONL se convierte de manera "
         "reproducible a CSV y XML mediante scripts/S03_nuclei_a_reportes.py.",
-        "Evidencia del escaneo: pendiente de ejecución."
+        "El escaneo produjo tres hallazgos reales: métricas Prometheus expuestas, instalador de WordPress "
+        "accesible y listado de archivos de configuración en DVWA. Se conservaron CSV, XML y JSONL."
     ],
 }
 
@@ -180,15 +189,15 @@ for heading, paragraphs in [
         "Paso D — Convertir hallazgos técnicos en riesgos de negocio",
         [
             "El programa 30_papeles_trabajo/PT03_tecnico_a_riesgo.py combina cada hallazgo con el dueño, "
-            "clasificación, exposición y criticidad del activo. El registro final se generará en "
-            "40_hallazgos/PT03_registro_riesgos.csv después del escaneo."
+            "clasificación, exposición y criticidad del activo. El registro final contiene diez riesgos: tres "
+            "derivados de Nuclei y siete sustentados en la línea base de configuración del entorno."
         ],
     ),
     (
         "Paso E — Tratamiento y extracto de la Declaración de Aplicabilidad",
         [
-            "Se preparó PT03_soa_extracto.md con cinco controles, incluido A.7.4 como control excluido y "
-            "justificado. Los identificadores de riesgo se completarán después de generar el registro real."
+            "PT03_soa_extracto.md contiene cinco controles, incluido A.7.4 como control excluido y justificado, "
+            "con referencias a los riesgos del registro. SimpleRisk conserva planes aceptados para R-001 a R-004."
         ],
     ),
 ]:
@@ -215,13 +224,13 @@ for row, values in zip(resource_rows, resource_data):
 
 result_rows = tables[1].findall(W + "tr")[1:]
 results = [
-    ("Greenbone/OpenVAS operativo o Nuclei como alternativa documentada", "Pendiente", "docs/evidencias/S03/"),
-    ("SimpleRisk configurado con escalas 1–5 y criterio de aceptación", "Pendiente", "Captura de Risk Formula pendiente"),
-    ("Reporte técnico CSV y XML con objetivos autorizados", "Pendiente", "20_evidencia/E03_scan/"),
-    ("Registro con al menos 10 riesgos", "Pendiente", "40_hallazgos/PT03_registro_riesgos.csv"),
-    ("Dos casos contrastantes documentados", "Pendiente", "Papel de trabajo pendiente"),
-    ("Cinco riesgos cargados y tratados en SimpleRisk", "Pendiente", "Capturas de SimpleRisk pendientes"),
-    ("Extracto de SoA con cinco controles", "Parcial", "30_papeles_trabajo/PT03_soa_extracto.md"),
+    ("Greenbone/OpenVAS operativo o Nuclei como alternativa documentada", "Logrado", "Capturas 02–03 y E03_scan/"),
+    ("SimpleRisk configurado con escalas 1–5 y criterio de aceptación", "Logrado", "Capturas 04–07"),
+    ("Reporte técnico CSV y XML con objetivos autorizados", "Logrado", "20_evidencia/E03_scan/"),
+    ("Registro con al menos 10 riesgos", "Logrado", "40_hallazgos/PT03_registro_riesgos.csv"),
+    ("Dos casos contrastantes documentados", "Parcial", "R-003: CVSS alto/riesgo bajo; R-001: CVSS medio/riesgo alto"),
+    ("Cinco riesgos cargados y tratados en SimpleRisk", "Parcial (4/5)", "Capturas 08–15: R-001 a R-004"),
+    ("Extracto de SoA con cinco controles", "Logrado", "30_papeles_trabajo/PT03_soa_extracto.md"),
     ("Hashes, cadena de custodia y commit", "Pendiente", "20_evidencia/SHA256SUMS_E03.txt"),
 ]
 for index, (row, values) in enumerate(zip(result_rows, results), start=1):
