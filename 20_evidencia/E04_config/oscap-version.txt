@@ -1,0 +1,100 @@
+OpenSCAP command line tool (oscap) 1.2.17
+Copyright 2009--2017 Red Hat Inc., Durham, North Carolina.
+
+==== Supported specifications ====
+XCCDF Version: 1.2
+OVAL Version: 5.11.1
+CPE Version: 2.3
+CVSS Version: 2.0
+CVE Version: 2.0
+Asset Identification Version: 1.1
+Asset Reporting Format Version: 1.1
+CVRF Version: 1.1
+
+==== Capabilities added by auto-loaded plugins ====
+SCE Version: 1.0 (from libopenscap_sce.so.8)
+
+==== Paths ====
+Schema files: /usr/share/openscap/schemas
+Default CPE files: /usr/share/openscap/cpe
+Probes: /usr/lib/x86_64-linux-gnu/openscap
+
+==== Inbuilt CPE names ====
+Red Hat Enterprise Linux - cpe:/o:redhat:enterprise_linux
+Red Hat Enterprise Linux 5 - cpe:/o:redhat:enterprise_linux:5
+Red Hat Enterprise Linux 6 - cpe:/o:redhat:enterprise_linux:6
+Red Hat Enterprise Linux 7 - cpe:/o:redhat:enterprise_linux:7
+Oracle Linux 5 - cpe:/o:oracle:linux:5
+Oracle Linux 6 - cpe:/o:oracle:linux:6
+Oracle Linux 7 - cpe:/o:oracle:linux:7
+Community Enterprise Operating System 5 - cpe:/o:centos:centos:5
+Community Enterprise Operating System 6 - cpe:/o:centos:centos:6
+Community Enterprise Operating System 7 - cpe:/o:centos:centos:7
+Scientific Linux 5 - cpe:/o:scientificlinux:scientificlinux:5
+Scientific Linux 6 - cpe:/o:scientificlinux:scientificlinux:6
+Scientific Linux 7 - cpe:/o:scientificlinux:scientificlinux:7
+Fedora 16 - cpe:/o:fedoraproject:fedora:16
+Fedora 17 - cpe:/o:fedoraproject:fedora:17
+Fedora 18 - cpe:/o:fedoraproject:fedora:18
+Fedora 19 - cpe:/o:fedoraproject:fedora:19
+Fedora 20 - cpe:/o:fedoraproject:fedora:20
+Fedora 21 - cpe:/o:fedoraproject:fedora:21
+Fedora 22 - cpe:/o:fedoraproject:fedora:22
+Fedora 23 - cpe:/o:fedoraproject:fedora:23
+Fedora 24 - cpe:/o:fedoraproject:fedora:24
+Fedora 25 - cpe:/o:fedoraproject:fedora:25
+Fedora 26 - cpe:/o:fedoraproject:fedora:26
+Fedora 27 - cpe:/o:fedoraproject:fedora:27
+Fedora 28 - cpe:/o:fedoraproject:fedora:28
+Fedora 29 - cpe:/o:fedoraproject:fedora:29
+SUSE Linux Enterprise all versions - cpe:/o:suse:sle
+SUSE Linux Enterprise Server 10 - cpe:/o:suse:sles:10
+SUSE Linux Enterprise Desktop 10 - cpe:/o:suse:sled:10
+SUSE Linux Enterprise Server 11 - cpe:/o:suse:linux_enterprise_server:11
+SUSE Linux Enterprise Desktop 11 - cpe:/o:suse:linux_enterprise_desktop:11
+SUSE Linux Enterprise Server 12 - cpe:/o:suse:sles:12
+SUSE Linux Enterprise Desktop 12 - cpe:/o:suse:sled:12
+openSUSE 11.4 - cpe:/o:opensuse:opensuse:11.4
+openSUSE 13.1 - cpe:/o:opensuse:opensuse:13.1
+openSUSE 13.2 - cpe:/o:opensuse:opensuse:13.2
+openSUSE 42.1 - cpe:/o:novell:leap:42.1
+openSUSE 42.2 - cpe:/o:novell:leap:42.2
+openSUSE All Versions - cpe:/o:opensuse:opensuse
+Red Hat Enterprise Linux Optional Productivity Applications - cpe:/a:redhat:rhel_productivity
+Red Hat Enterprise Linux Optional Productivity Applications 5 - cpe:/a:redhat:rhel_productivity:5
+Wind River Linux all versions - cpe:/o:windriver:wrlinux
+Wind River Linux 8 - cpe:/o:windriver:wrlinux:8
+
+==== Supported OVAL objects and associated OpenSCAP probes ====
+OVAL family   OVAL object                  OpenSCAP probe              
+----------    ----------                   ----------                  
+(null)        system_info                  probe_system_info           
+independent   family                       probe_family                
+independent   filehash                     probe_filehash              
+independent   environmentvariable          probe_environmentvariable   
+independent   textfilecontent54            probe_textfilecontent54     
+independent   textfilecontent              probe_textfilecontent       
+independent   variable                     probe_variable              
+independent   xmlfilecontent               probe_xmlfilecontent        
+independent   environmentvariable58        probe_environmentvariable58 
+independent   filehash58                   probe_filehash58            
+linux         dpkginfo                     probe_dpkginfo              
+linux         inetlisteningservers         probe_inetlisteningservers  
+linux         partition                    probe_partition             
+linux         iflisteners                  probe_iflisteners           
+linux         selinuxboolean               probe_selinuxboolean        
+linux         selinuxsecuritycontext       probe_selinuxsecuritycontext
+linux         systemdunitproperty          probe_systemdunitproperty   
+linux         systemdunitdependency        probe_systemdunitdependency 
+unix          file                         probe_file                  
+unix          interface                    probe_interface             
+unix          password                     probe_password              
+unix          process                      probe_process               
+unix          runlevel                     probe_runlevel              
+unix          shadow                       probe_shadow                
+unix          uname                        probe_uname                 
+unix          xinetd                       probe_xinetd                
+unix          sysctl                       probe_sysctl                
+unix          process58                    probe_process58             
+unix          routingtable                 probe_routingtable          
+unix          symlink                      probe_symlink               
