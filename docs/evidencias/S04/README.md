@@ -11,7 +11,7 @@ Esta carpeta contiene el índice versionable de evidencias del Taller 04. Los re
 | 3 | Docker Bench, conteo de WARN y secciones 4 y 5 | [`docker-bench.log`](../../../20_evidencia/E04_config/docker-bench.log) | Logrado: 105 advertencias consolidadas |
 | 4 | Trivy: imágenes, IaC, secretos y SBOM CycloneDX | [`E04_config`](../../../20_evidencia/E04_config/) | Logrado: 141 vulnerabilidades y 5 detecciones de secretos con valores redactados |
 | 5 | Matriz única ISO/IEC 27001 y COBIT 2019 | [`PT04_matriz_control.csv`](../../../40_hallazgos/PT04_matriz_control.csv) | Logrado: 294 registros |
-| 6 | Menos de 20 % sin clasificar | [`06_matriz_validacion.png`](06_matriz_validacion.png) | Logrado: 0 de 294 (0,0 %); la captura debe actualizarse tras la última ejecución |
+| 6 | Menos de 20 % sin clasificar | [`06_matriz_validacion.png`](06_matriz_validacion.png) | Logrado: 0 de 294 (0,0 %), comprobado en la ejecución final |
 | 7 | Diseño frente a eficacia operativa | [`PT04_diseno_vs_eficacia.md`](../../../30_papeles_trabajo/PT04_diseno_vs_eficacia.md) | Logrado: A.8.6 clasificado como deficiencia de diseño |
 | 8 | Integridad SHA-256 | [`SHA256SUMS_E04.txt`](../../../20_evidencia/SHA256SUMS_E04.txt) | Logrado: 22 artefactos verificados |
 
