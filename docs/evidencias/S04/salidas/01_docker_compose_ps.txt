@@ -1,0 +1,8 @@
+NAME               IMAGE                          COMMAND                  SERVICE         CREATED       STATUS                    PORTS
+si084_db           postgres:16                    "docker-entrypoint.sΓÇª"   db              7 days ago    Up 10 minutes             127.0.0.1:55432->5432/tcp
+si084_dvwa         vulnerables/web-dvwa:latest    "/main.sh"               dvwa            2 weeks ago   Up 40 minutes             127.0.0.1:8081->80/tcp
+si084_juiceshop    bkimminich/juice-shop:latest   "/nodejs/bin/node /jΓÇª"   juiceshop       2 weeks ago   Up 40 minutes             127.0.0.1:3000->3000/tcp
+si084_portal       wordpress:latest               "docker-entrypoint.sΓÇª"   wordpress       2 weeks ago   Up 10 minutes             127.0.0.1:8082->80/tcp
+si084_simplerisk   simplerisk/simplerisk:latest   "/entrypoint.sh /usrΓÇª"   simplerisk      7 days ago    Up 10 minutes (healthy)   127.0.0.1:8083->80/tcp, 127.0.0.1:8443->443/tcp
+si084_srdb         mariadb:11                     "docker-entrypoint.sΓÇª"   simplerisk-db   7 days ago    Up 10 minutes             3306/tcp
+si084_wpdb         mariadb:11                     "docker-entrypoint.sΓÇª"   wpdb            2 weeks ago   Up 10 minutes             3306/tcp

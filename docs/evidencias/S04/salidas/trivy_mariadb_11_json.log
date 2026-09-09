@@ -1,0 +1,9 @@
+2026-09-09T21:32:33Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-09-09T21:32:33Z	INFO	[secret] Secret scanning is enabled
+2026-09-09T21:32:33Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2026-09-09T21:32:33Z	INFO	[secret] Please see https://trivy.dev/docs/v0.74/guide/scanner/secret#recommendation for faster secret detection
+2026-09-09T21:32:36Z	INFO	Detected OS	family="ubuntu" version="24.04"
+2026-09-09T21:32:36Z	INFO	[ubuntu] Detecting vulnerabilities...	os_version="24.04" pkg_num=142
+2026-09-09T21:32:36Z	INFO	Number of language-specific files	num=1
+2026-09-09T21:32:36Z	INFO	[gobinary] Detecting vulnerabilities...
+2026-09-09T21:32:36Z	WARN	Using severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.74/guide/scanner/vulnerability#severity-selection for details.
