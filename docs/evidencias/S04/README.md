@@ -24,6 +24,11 @@ Esta carpeta contiene el índice versionable de evidencias del Taller 04. Los re
 5. [`05_trivy_resumen.png`](05_trivy_resumen.png)
 6. [`06_matriz_validacion.png`](06_matriz_validacion.png)
 
+## Entrega versionada
+
+- Pull Request a `develop`: <https://github.com/srg-cp/SI084-LAB-01/pull/1>
+- Versión etiquetada: <https://github.com/srg-cp/SI084-LAB-01/tree/taller-04>
+
 ## Ejecución
 
 Desde PowerShell, en la raíz de `auditoria-si084`:

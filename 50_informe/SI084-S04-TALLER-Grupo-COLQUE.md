@@ -95,7 +95,7 @@ El control A.8.6 Gestión de la capacidad no está incorporado en el archivo `do
 ### 3.4 URL de entrega
 
 - Versión etiquetada: <https://github.com/srg-cp/SI084-LAB-01/tree/taller-04>
-- Pull Request hacia `develop`: `[COMPLETAR DESPUÉS DE PUBLICAR]`
+- Pull Request hacia `develop`: <https://github.com/srg-cp/SI084-LAB-01/pull/1>
 - Índice de evidencias: <https://github.com/srg-cp/SI084-LAB-01/blob/taller-04/docs/evidencias/S04/README.md>
 
 ### 3.5 Riesgo de transferencia

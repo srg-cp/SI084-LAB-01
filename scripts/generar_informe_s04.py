@@ -292,7 +292,7 @@ replacements = {
         "Anexo E — Capturas numeradas 01 a 06.\n"
         "Anexo F — Hashes y cadena de custodia.\n"
         "Etiqueta: https://github.com/srg-cp/SI084-LAB-01/tree/taller-04\n"
-        "Pull Request a develop: [COMPLETAR DESPUÉS DE PUBLICAR]"
+        "Pull Request a develop: https://github.com/srg-cp/SI084-LAB-01/pull/1"
     ),
 }
 
